@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOKZ CineHub - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Sora', sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: #1e293b;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #e50914;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="password"]:focus {
+            border-color: #e50914;
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.2);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #e50914;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #ff1f2a;
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 13px;
+            margin-top: 15px;
+            display: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <h1>🍿 GOKZ CineHub</h1>
+        <p>This stash is private. Enter password to unlock.</p>
+        
+        <form id="loginForm" onsubmit="checkPassword(event)">
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required autofocus>
+            </div>
+            <button type="submit" class="login-btn">Unlock Vault 🚀</button>
+            <div id="error" class="error-msg">❌ Incorrect password. Try again.</div>
+        </form>
+    </div>
+
+    <script>
+        function checkPassword(event) {
+            event.preventDefault();
+            const passwordInput = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+            
+            // 🔒 Your designated password
+            const correctPassword = "moviesforyou"; 
+            
+            if (passwordInput === correctPassword) {
+                // Sets a temporary session key so they don't get locked out while browsing
+                sessionStorage.setItem('cinehub_access', 'true');
+                window.location.href = "index.html";
+            } else {
+                errorDiv.style.display = "block";
+                document.getElementById('password').value = "";
+            }
+        }
+    </script>
+</body>
+</html>
