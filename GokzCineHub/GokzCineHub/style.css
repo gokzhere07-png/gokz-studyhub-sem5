@@ -1,0 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sora', sans-serif;
+}
+
+body {
+    background-color: #0b0f19;
+    color: #ffffff;
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #e50914; /* Netflix Red Accent */
+    letter-spacing: -1px;
+}
+
+header p {
+    color: #94a3b8;
+    margin-top: 5px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 20px 30px;
+}
+
+#movieSearch {
+    width: 100%;
+    max-width: 500px;
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#movieSearch:focus {
+    border-color: #e50914;
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.movie-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    background: #1e293b;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+.poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(11, 15, 25, 1) 15%, rgba(11, 15, 25, 0.6) 65%, rgba(0,0,0,0.1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.movie-card:hover .poster {
+    filter: blur(2px) brightness(0.5);
+}
+
+.movie-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.movie-info {
+    font-size: 12px;
+    color: #cbd5e1;
+    margin-bottom: 10px;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #3b82f6;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 800;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+.badge.neon-red {
+    background: #e50914;
+}
+
+.download-btn {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    background: #e50914;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.download-btn:hover {
+    background: #ff1f2a;
+}
+
+.back-home-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #1e293b;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+.back-home-btn:hover {
+    background: #334155;
+    border-color: #fff;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px 0;
+    color: #475569;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .movie-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+}
