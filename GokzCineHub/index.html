@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOKZ CineHub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>🍿 GOKZ CineHub</h1>
+        <p>My Ultimate Movie Stash</p>
+    </header>
+
+    <section class="search-container">
+        <input type="text" id="movieSearch" placeholder="🔍 Search movies or genres..." onkeyup="filterMovies()">
+    </section>
+
+    <!-- Netflix Visual Grid -->
+    <main class="movie-grid">
+
+        <!-- Movie 1 Example -->
+        <div class="movie-card" data-title="interstellar sci-fi space christopher nolan">
+            <span class="badge">1080p</span>
+            <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=500" alt="Interstellar" class="poster">
+            <div class="card-overlay">
+                <h3 class="movie-title">Interstellar</h3>
+                <p class="movie-info">Sci-Fi • 2014</p>
+                <a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" class="download-btn">🚀 Download</a>
+            </div>
+        </div>
+
+        <!-- Movie 2 Example -->
+        <div class="movie-card" data-title="demon slayer anime action animation">
+            <span class="badge neon-red">4K UHD</span>
+            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=500" alt="Demon Slayer" class="poster">
+            <div class="card-overlay">
+                <h3 class="movie-title">Demon Slayer</h3>
+                <p class="movie-info">Anime • Action</p>
+                <a href="YOUR_GOOGLE_DRIVE_LINK_HERE" target="_blank" class="download-btn">🚀 Download</a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Back Navigation Navigation Button -->
+    <div style="text-align: center; margin-top: 40px; margin-bottom: 20px;">
+        <a href="../index.html" class="back-home-btn">⬅ Back to StudyHub</a>
+    </div>
+
+    <footer>
+        Made with ❤️ by <b>GOKZ</b>
+    </footer>
+
+    <!-- Instant Search Filtering Script -->
+    <script>
+        function filterMovies() {
+            let input = document.getElementById('movieSearch').value.toLowerCase();
+            let cards = document.getElementsByClassName('movie-card');
+            for (let i = 0; i < cards.length; i++) {
+                let titleAttr = cards[i].getAttribute('data-title');
+                if (titleAttr.includes(input)) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
